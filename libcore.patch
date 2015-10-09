@@ -1,0 +1,36 @@
+--- droidbox_Taint.java	2015-10-09 13:20:15.000000000 +0200
++++ Taint.java	2015-10-09 13:15:17.000000000 +0200
+@@ -483,6 +483,24 @@
+      */
+     native public static void addTaintFile(int fd, int tag);
+ 
++    public static void log(String msg){
++    	
++    	String updated_msg="";
++    	/*
++    	 * if the last character is closing }} substitute it for the classname
++    	 * 
++    	 */
++    	if(msg.charAt(msg.length()-1)=='}'){
++    		String calling_component = VMStack.getCallingClassLoader().getClass().getName();
++    		updated_msg = msg.replaceAll("} }","}"+" Caller: "+calling_component+"}");
++    	}else{
++    		/* TO DO */
++    		updated_msg = msg;
++    	}
++    	
++    	logi(updated_msg);
++    }
++
+ 
+     /**
+      * Logging utility accessible from places android.util.Log
+@@ -491,7 +509,7 @@
+      * @param msg
+      *	    the message to log
+      */
+-    native public static void log(String msg);
++    native public static void logi(String msg);
+ 
+ 
+     /**

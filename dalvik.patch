@@ -1,0 +1,11 @@
+--- droidbox_dalvik_system_Taint.cpp	2015-10-09 13:19:56.000000000 +0200
++++ dalvik_system_Taint.cpp	2015-10-09 13:15:17.000000000 +0200
+@@ -630,7 +630,7 @@
+ /*
+  * public static void log(String msg)
+  */
+-static void Dalvik_dalvik_system_Taint_log(const u4* args,
++static void Dalvik_dalvik_system_Taint_logi(const u4* args,
+     JValue* pResult)
+ {
+     StringObject* msgObj = (StringObject*) args[0];
